@@ -12,7 +12,6 @@
             --text-main: #ffffff;
             --text-dim: #999;
             --border: #333;
-            --green: #27ae60;
         }
         body {
             background-color: var(--bg);
@@ -30,24 +29,26 @@
         }
         .container { max-width: 500px; margin: 0 auto; padding: 15px; }
         
+        /* CALCULADORA */
         .input-group { background: var(--card-bg); padding: 20px; border-radius: 15px; border: 1px solid var(--accent); margin-bottom: 25px; text-align: center; }
         input[type="number"] { background: transparent; border: none; border-bottom: 3px solid var(--accent); color: white; font-size: 32px; width: 100px; text-align: center; outline: none; font-weight: bold; }
-
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
         .stat-card { background: #000; padding: 12px; border-radius: 10px; border: 1px solid var(--border); }
         .stat-val { font-size: 18px; font-weight: 900; color: var(--accent); display: block; }
         .stat-label { font-size: 9px; text-transform: uppercase; color: var(--text-dim); }
 
-        .section-title { border-left: 4px solid var(--accent); padding-left: 12px; margin: 35px 0 15px; text-transform: uppercase; font-size: 16px; font-weight: 900; color: var(--accent); }
+        .section-title { border-left: 4px solid var(--accent); padding-left: 12px; margin: 35px 0 15px; text-transform: uppercase; font-size: 16px; font-weight: 900; color: var(--accent); letter-spacing: 1px; }
 
         .card { background: var(--card-bg); border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); }
         
-        .diet-block { margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 15px; }
+        /* NUTRICIÓN */
+        .diet-block { margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 15px; }
         .diet-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
         .diet-time { background: var(--accent); color: white; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 4px; }
-        .diet-title { font-size: 14px; font-weight: bold; color: #fff; }
+        .diet-title { font-size: 14px; font-weight: bold; }
         .diet-content { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
 
+        /* ENTRENAMIENTO */
         .day-header { background: #1a1a1a; padding: 15px; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; font-size: 13px; font-weight: 900; border: 1px solid var(--border); border-bottom: 2px solid var(--accent); }
         .ex-list { background: var(--card-bg); border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; margin-bottom: 25px; }
         .ex-item { padding: 15px; border-bottom: 1px solid #252525; display: flex; align-items: flex-start; gap: 15px; }
@@ -58,6 +59,10 @@
         .wod-box { background: rgba(255, 69, 0, 0.05); border: 1px dashed var(--accent); margin: 15px; padding: 15px; border-radius: 10px; }
         .wod-tag { background: var(--accent); color: white; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
 
+        /* REGLAS */
+        .rule-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 13px; }
+        .rule-icon { color: var(--accent); font-weight: bold; }
+
         input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--accent); cursor: pointer; }
         .completed { opacity: 0.2; filter: grayscale(1); transition: 0.3s; }
     </style>
@@ -65,14 +70,14 @@
 <body>
 
 <div class="header">
-    <h1 style="margin:0; letter-spacing: 2px;">ANDRÉS <span style="color:var(--accent)">DEFINICIÓN ELITE</span></h1>
-    <p style="font-size: 11px; color: var(--text-dim); margin-top: 10px; letter-spacing: 2px;">PLAN MAESTRO 8 SEMANAS</p>
+    <h1 style="margin:0; letter-spacing: 2px;">ANDRÉS <span style="color:var(--accent)">ELITE</span></h1>
+    <p style="font-size: 11px; color: var(--text-dim); margin-top: 10px; letter-spacing: 2px;">DEFINICIÓN EXTREMA · 8 SEMANAS</p>
 </div>
 
 <div class="container">
     
     <div class="input-group">
-        <label style="display:block; font-size:11px; margin-bottom:10px; color:var(--text-dim); text-transform: uppercase;">Ajusta tu Peso Actual (KG)</label>
+        <label style="display:block; font-size:11px; margin-bottom:10px; color:var(--text-dim); text-transform: uppercase;">Peso Actual (KG)</label>
         <input type="number" id="weightInput" value="102" oninput="calculate()">
         <div class="stats-grid">
             <div class="stat-card"><span class="stat-val" id="kcal">2100</span><span class="stat-label">Kcal/Día</span></div>
@@ -81,66 +86,75 @@
         </div>
     </div>
 
-    <div class="section-title">01 - Nutrición y Macros</div>
+    <div class="section-title">01 - Reglas y Suplementos</div>
+    <div class="card">
+        <div class="rule-item"><span class="rule-icon">✔</span> 3.5 Litros de agua diarios (Obligatorio).</div>
+        <div class="rule-item"><span class="rule-icon">✔</span> Multivitamínico (1 cápsula con el desayuno).</div>
+        <div class="rule-item"><span class="rule-icon">✔</span> Omega 3 (2g diarios con el almuerzo).</div>
+        <div class="rule-item"><span class="rule-icon">✔</span> Dormir 7-8 horas para reparación muscular.</div>
+        <div class="rule-item" style="color:var(--accent); font-weight:bold;"><span class="rule-icon">✘</span> Cero azúcar y harinas refinadas.</div>
+    </div>
+
+    <div class="section-title">02 - Alimentación Planificada</div>
     <div class="card">
         <div class="diet-block">
-            <div class="diet-header"><span class="diet-title">Desayuno (06:30 AM)</span><span class="diet-time">PROTEÍNA + FIBRA</span></div>
-            <div class="diet-content"><strong>Huevos:</strong> 3 enteros + 2 claras (revueltos o en tortilla).<br><strong>Carbo:</strong> 1/2 taza de avena cocida en agua con canela.<br><strong>Extra:</strong> Café negro o té verde sin azúcar.</div>
+            <div class="diet-header"><span class="diet-title">Desayuno (06:30)</span><span class="diet-time">COMIDA 1</span></div>
+            <div class="diet-content">3 huevos enteros + 2 claras + 1/2 taza avena cocida con canela. Café negro.</div>
         </div>
         <div class="diet-block">
-            <div class="diet-header"><span class="diet-title">Almuerzo (12:30 PM)</span><span class="diet-time">FUERZA</span></div>
-            <div class="diet-content"><strong>Proteína:</strong> 200g de pechuga de pollo o carne roja magra.<br><strong>Carbo:</strong> 150g de arroz blanco o papa cocida (1 taza).<br><strong>Fibra:</strong> Ensalada verde ilimitada (espinaca, pepino, brócoli).</div>
+            <div class="diet-header"><span class="diet-title">Almuerzo (12:30)</span><span class="diet-time">COMIDA 2</span></div>
+            <div class="diet-content">200g Pollo o Carne magra + 150g Arroz o Papa + Ensalada verde ilimitada.</div>
         </div>
         <div class="diet-block">
-            <div class="diet-header"><span class="diet-title">Merienda (04:30 PM)</span><span class="diet-time">DENSIDAD</span></div>
-            <div class="diet-content"><strong>Fruta:</strong> 1 manzana verde o pera.<br><strong>Grasa:</strong> 10 almendras o nueces.<br><strong>Opcional:</strong> 1 scoop de proteína en agua.</div>
+            <div class="diet-header"><span class="diet-title">Merienda (16:30)</span><span class="diet-time">COMIDA 3</span></div>
+            <div class="diet-content">1 Manzana verde + 10 almendras. (Opcional: Batido de proteína).</div>
         </div>
-        <div class="diet-block" style="border:none; padding-bottom:0;">
-            <div class="diet-header"><span class="diet-title">Cena (07:30 PM)</span><span class="diet-time">RECUPERACIÓN</span></div>
-            <div class="diet-content"><strong>Proteína:</strong> 200g de pescado blanco o atún.<br><strong>Fibra:</strong> Verduras al vapor o salteadas.<br><strong>Nota:</strong> Evitar carbohidratos complejos en esta comida.</div>
+        <div class="diet-block" style="border:none;">
+            <div class="diet-header"><span class="diet-title">Cena (19:30)</span><span class="diet-time">COMIDA 4</span></div>
+            <div class="diet-content">200g Pescado o Atún + Verduras al vapor. (Sin carbohidratos).</div>
         </div>
     </div>
 
-    <div class="section-title">02 - Plan de Entrenamiento</div>
+    <div class="section-title">03 - Rutina de Fuerza y CrossFit</div>
 
     <div class="day-header"><span>LUNES</span> <span style="color:var(--accent)">PUSH (PECHO/HOMBRO)</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 10 REPS</span><span class="ex-name">Press de Banca (Barra)</span><span class="ex-desc">Acostado, baja la barra al pecho medio. Empuja explosivo. Mantiene los codos a 45 grados.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Press Militar (Mancuerna)</span><span class="ex-desc">Sentado, sube las pesas sobre la cabeza. Controla el descenso hasta la altura de las orejas.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 15 REPS</span><span class="ex-name">Elevaciones Laterales</span><span class="ex-desc">Sube las mancuernas hacia los lados sin balancear el torso. Enfoca el esfuerzo en el hombro lateral.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>EMOM 15':</strong><br>Min 1: 12 Burpees.<br>Min 2: 50 Saltos de Lazo.<br>Min 3: 15 Kettlebell Swings (con mancuerna).</div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 X 10</span><span class="ex-name">Press de Banca (Barra)</span><span class="ex-desc">Baja la barra al pecho medio. Empuja fuerte. Codos a 45°.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X 12</span><span class="ex-name">Press Militar (Mancuerna)</span><span class="ex-desc">Sentado, sube pesas sobre la cabeza. Controla el descenso.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X 15</span><span class="ex-name">Elevaciones Laterales</span><span class="ex-desc">Eleva mancuernas a los lados hasta la altura del hombro.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - EMOM</span><div class="diet-content">Min 1: 12 Burpees / Min 2: 50 Saltos Lazo / Min 3: 15 Swings.</div></div>
     </div>
 
     <div class="day-header"><span>MARTES</span> <span style="color:var(--accent)">PULL (ESPALDA/BÍCEPS)</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 10 REPS</span><span class="ex-name">Remo con Barra</span><span class="ex-desc">Torso a 45 grados, jala la barra hacia el ombligo apretando la espalda alta.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Curl con Barra Z</span><span class="ex-desc">Usa el agarre curvo. Sube apretando el bíceps y baja lento sin estirar del todo abajo.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Remo Unilateral Mancuerna</span><span class="ex-desc">Apóyate en el banco, jala la mancuerna hacia la cadera manteniendo el codo pegado.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>AMRAP 15':</strong><br>10 Snatch c/mancuerna + 15 Flexiones + 30 Mountain Climbers.</div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 X 10</span><span class="ex-name">Remo con Barra</span><span class="ex-desc">Inclinado, jala hacia el ombligo apretando escápulas.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X 12</span><span class="ex-name">Curl con Barra Z</span><span class="ex-desc">Sube apretando bíceps, baja lento sin balancear el torso.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X 12</span><span class="ex-name">Remo Unilateral (Mancuerna)</span><span class="ex-desc">Apoya mano en banco, jala mancuerna hacia la cadera.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - AMRAP</span><div class="diet-content">10 Snatch c/mancuerna + 15 Flexiones + 30 Escaladores.</div></div>
     </div>
 
     <div class="day-header"><span>MIÉRCOLES</span> <span style="color:var(--accent)">PIERNA / ABDOMEN</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 12 REPS</span><span class="ex-name">Sentadilla (Mancuerna)</span><span class="ex-desc">Sostén las pesas a los lados o al pecho. Baja la cadera rompiendo el paralelo.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 15 REPS</span><span class="ex-name">Rueda Abdominal</span><span class="ex-desc">Desde rodillas, rueda adelante controlando que la espalda no se doble.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Peso Muerto Rumano</span><span class="ex-desc">Baja la barra rozando las piernas hasta sentir tensión en el femoral. Espalda recta.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>FOR TIME:</strong><br>100 Saltos de lazo + 50 Sentadillas + 50 Abdominales + 100 Saltos de lazo.</div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 X 12</span><span class="ex-name">Sentadilla (Mancuernas)</span><span class="ex-desc">Mancuernas a los lados. Baja la cadera con espalda recta.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 X 15</span><span class="ex-name">Rueda Abdominal</span><span class="ex-desc">Rueda adelante controlando el core. No arquees la espalda.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X 12</span><span class="ex-name">Peso Muerto Rumano</span><span class="ex-desc">Baja la barra rozando piernas hasta sentir estiramiento femoral.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - FOR TIME</span><div class="diet-content">100 Saltos lazo + 50 Sentadillas + 100 Saltos lazo.</div></div>
     </div>
 
     <div class="day-header"><span>JUEVES</span> <span style="color:var(--accent)">PUSH B (PECHO/TRÍCEPS)</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 10 REPS</span><span class="ex-name">Press Inclinado (Mancuerna)</span><span class="ex-desc">Banco a 30 grados. Enfoca el esfuerzo en la parte alta del pecho.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Press Francés (Barra Z)</span><span class="ex-desc">Acostado, baja la barra hacia la frente moviendo solo los antebrazos.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X MAX</span><span class="ex-name">Flexiones de Brazo</span><span class="ex-desc">Cuerpo recto, pecho al suelo. Haz todas las que puedas con buena técnica.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>DEATH BY BURPEES:</strong><br>Min 1: 5 Reps. Min 2: 6 Reps. Sigue sumando 1 cada minuto hasta fallar.</div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 X 10</span><span class="ex-name">Press Inclinado (Mancuerna)</span><span class="ex-desc">Enfoque en pecho superior. Banco a 30 grados.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X 12</span><span class="ex-name">Press Francés (Barra Z)</span><span class="ex-desc">Acostado, baja la barra a la frente moviendo solo antebrazos.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X MAX</span><span class="ex-name">Flexiones de Brazo</span><span class="ex-desc">Extensión completa. Mantén el cuerpo como una tabla.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - DEATH BY</span><div class="diet-content">Burpees: Empieza con 5 reps el Min 1. Suma 1 cada minuto.</div></div>
     </div>
 
     <div class="day-header"><span>VIERNES</span> <span style="color:var(--accent)">PULL B (HOMBROS/BÍCEPS)</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Remo al Mentón (Barra Z)</span><span class="ex-desc">Sube la barra pegada al cuerpo dirigiendo los codos hacia el techo.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Curl Martillo (Mancuerna)</span><span class="ex-desc">Sostén las mancuernas con palmas enfrentadas. Sube sin girar la muñeca.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 8 REPS</span><span class="ex-name">Peso Muerto Convencional</span><span class="ex-desc">Jala la barra desde el suelo usando piernas y espalda al tiempo. Técnica estricta.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>EMOM 15':</strong><br>Min 1: 15 Swings / Min 2: 15 Sentadillas Goblet / Min 3: 45s Plancha.</div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X 12</span><span class="ex-name">Remo al Mentón (Barra Z)</span><span class="ex-desc">Sube la barra pegada al pecho dirigiendo codos al techo.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 X 12</span><span class="ex-name">Curl Martillo (Mancuerna)</span><span class="ex-desc">Palmas enfrentadas. Sube sin girar la muñeca.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 X 8</span><span class="ex-name">Peso Muerto Convencional</span><span class="ex-desc">Jala barra desde suelo. Espalda recta, usa piernas y glúteo.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - EMOM</span><div class="diet-content">Min 1: 15 Swings / Min 2: 15 Goblet Squats / Min 3: 45s Plancha.</div></div>
     </div>
 
 </div>
