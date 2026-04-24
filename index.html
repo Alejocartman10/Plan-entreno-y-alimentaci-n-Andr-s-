@@ -3,126 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Andrés - Elite V3</title>
+    <title>Plan Andrés - Definición Elite</title>
     <style>
         :root {
             --bg: #000000;
-            --card-bg: #1a1a1a;
+            --card-bg: #111111;
             --accent: #ff4500;
             --text-main: #ffffff;
-            --text-dim: #a0a0a0;
+            --text-dim: #999;
             --border: #333;
+            --green: #27ae60;
         }
         body {
             background-color: var(--bg);
             color: var(--text-main);
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0;
-            padding-bottom: 50px;
+            padding-bottom: 60px;
         }
         .header {
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
             border-bottom: 4px solid var(--accent);
             background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80');
             background-size: cover;
         }
-        .container { max-width: 480px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 500px; margin: 0 auto; padding: 15px; }
         
-        /* SECCIÓN EDITABLE */
-        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px; }
-        .stat-card { background: var(--card-bg); padding: 10px; border-radius: 8px; text-align: center; border: 1px solid var(--border); }
-        .stat-val { font-size: 18px; font-weight: bold; color: var(--accent); display: block; }
+        .input-group { background: var(--card-bg); padding: 20px; border-radius: 15px; border: 1px solid var(--accent); margin-bottom: 25px; text-align: center; }
+        input[type="number"] { background: transparent; border: none; border-bottom: 3px solid var(--accent); color: white; font-size: 32px; width: 100px; text-align: center; outline: none; font-weight: bold; }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
+        .stat-card { background: #000; padding: 12px; border-radius: 10px; border: 1px solid var(--border); }
+        .stat-val { font-size: 18px; font-weight: 900; color: var(--accent); display: block; }
         .stat-label { font-size: 9px; text-transform: uppercase; color: var(--text-dim); }
+
+        .section-title { border-left: 4px solid var(--accent); padding-left: 12px; margin: 35px 0 15px; text-transform: uppercase; font-size: 16px; font-weight: 900; color: var(--accent); }
+
+        .card { background: var(--card-bg); border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); }
         
-        .input-group { background: var(--card-bg); padding: 15px; border-radius: 12px; border: 1px solid var(--accent); margin-bottom: 20px; text-align: center; }
-        input[type="number"] { background: transparent; border: none; border-bottom: 2px solid var(--accent); color: white; font-size: 24px; width: 80px; text-align: center; outline: none; }
+        .diet-block { margin-bottom: 20px; border-bottom: 1px solid #222; padding-bottom: 15px; }
+        .diet-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .diet-time { background: var(--accent); color: white; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 4px; }
+        .diet-title { font-size: 14px; font-weight: bold; color: #fff; }
+        .diet-content { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
 
-        .section-title { border-left: 4px solid var(--accent); padding-left: 12px; margin: 30px 0 15px; text-transform: uppercase; font-size: 15px; font-weight: 900; letter-spacing: 1px; }
-
-        .card { background: var(--card-bg); border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid var(--border); }
-        .diet-row { display: flex; margin-bottom: 12px; font-size: 13px; border-bottom: 1px solid #2a2a2a; padding-bottom: 8px; }
-        .diet-time { color: var(--accent); font-weight: bold; width: 70px; }
-
-        .day-header { background: #222; padding: 12px; border-radius: 8px 8px 0 0; display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; border: 1px solid var(--border); }
-        .ex-list { background: var(--card-bg); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; margin-bottom: 20px; }
-        .ex-item { padding: 12px; border-bottom: 1px solid #2a2a2a; display: flex; align-items: flex-start; gap: 12px; }
-        .ex-name { font-size: 14px; font-weight: bold; display: block; color: #fff; }
-        .ex-desc { font-size: 11px; color: var(--text-dim); line-height: 1.4; display: block; margin-top: 3px; }
+        .day-header { background: #1a1a1a; padding: 15px; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; font-size: 13px; font-weight: 900; border: 1px solid var(--border); border-bottom: 2px solid var(--accent); }
+        .ex-list { background: var(--card-bg); border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; margin-bottom: 25px; }
+        .ex-item { padding: 15px; border-bottom: 1px solid #252525; display: flex; align-items: flex-start; gap: 15px; }
+        .ex-name { font-size: 15px; font-weight: bold; color: #fff; display: block; }
+        .ex-meta { font-size: 11px; color: var(--accent); font-weight: bold; margin-bottom: 5px; display: block; }
+        .ex-desc { font-size: 12px; color: var(--text-dim); line-height: 1.4; }
         
-        .wod-box { background: rgba(255, 69, 0, 0.1); border: 1px dashed var(--accent); margin: 10px; padding: 12px; border-radius: 8px; }
-        .wod-tag { color: var(--accent); font-size: 11px; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .wod-box { background: rgba(255, 69, 0, 0.05); border: 1px dashed var(--accent); margin: 15px; padding: 15px; border-radius: 10px; }
+        .wod-tag { background: var(--accent); color: white; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
 
-        input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; }
-        .completed { opacity: 0.3; filter: grayscale(1); }
+        input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--accent); cursor: pointer; }
+        .completed { opacity: 0.2; filter: grayscale(1); transition: 0.3s; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1 style="margin:0">ANDRÉS <span style="color:var(--accent)">DEFINICIÓN</span></h1>
-    <p style="font-size: 12px; color: var(--text-dim); margin-top: 10px;">HOME GYM · FULL EXPLAINED</p>
+    <h1 style="margin:0; letter-spacing: 2px;">ANDRÉS <span style="color:var(--accent)">DEFINICIÓN ELITE</span></h1>
+    <p style="font-size: 11px; color: var(--text-dim); margin-top: 10px; letter-spacing: 2px;">PLAN MAESTRO 8 SEMANAS</p>
 </div>
 
 <div class="container">
     
     <div class="input-group">
-        <label style="display:block; font-size:12px; margin-bottom:10px; color:var(--text-dim)">PESO ACTUAL (KG)</label>
+        <label style="display:block; font-size:11px; margin-bottom:10px; color:var(--text-dim); text-transform: uppercase;">Ajusta tu Peso Actual (KG)</label>
         <input type="number" id="weightInput" value="102" oninput="calculate()">
         <div class="stats-grid">
-            <div class="stat-card"><span class="stat-val" id="kcal">2100</span><span class="stat-label">Kcal</span></div>
+            <div class="stat-card"><span class="stat-val" id="kcal">2100</span><span class="stat-label">Kcal/Día</span></div>
             <div class="stat-card"><span class="stat-val" id="prot">163g</span><span class="stat-label">Proteína</span></div>
-            <div class="stat-card"><span class="stat-val" id="carb">210g</span><span class="stat-label">Carbo</span></div>
+            <div class="stat-card"><span class="stat-val" id="carb">210g</span><span class="stat-label">Carbos</span></div>
         </div>
     </div>
 
-    <div class="section-title">Alimentación Diaria</div>
+    <div class="section-title">01 - Nutrición y Macros</div>
     <div class="card">
-        <div class="diet-row"><div class="diet-time">06:30</div><div class="diet-desc">3 Huevos + 2 claras + 1/2 taza avena + Café.</div></div>
-        <div class="diet-row"><div class="diet-time">12:30</div><div class="diet-desc">200g Pollo/Carne + 150g Arroz/Papa + Ensalada.</div></div>
-        <div class="diet-row"><div class="diet-time">19:30</div><div class="diet-desc">200g Pescado/Pollo + Vegetales verdes al vapor.</div></div>
+        <div class="diet-block">
+            <div class="diet-header"><span class="diet-title">Desayuno (06:30 AM)</span><span class="diet-time">PROTEÍNA + FIBRA</span></div>
+            <div class="diet-content"><strong>Huevos:</strong> 3 enteros + 2 claras (revueltos o en tortilla).<br><strong>Carbo:</strong> 1/2 taza de avena cocida en agua con canela.<br><strong>Extra:</strong> Café negro o té verde sin azúcar.</div>
+        </div>
+        <div class="diet-block">
+            <div class="diet-header"><span class="diet-title">Almuerzo (12:30 PM)</span><span class="diet-time">FUERZA</span></div>
+            <div class="diet-content"><strong>Proteína:</strong> 200g de pechuga de pollo o carne roja magra.<br><strong>Carbo:</strong> 150g de arroz blanco o papa cocida (1 taza).<br><strong>Fibra:</strong> Ensalada verde ilimitada (espinaca, pepino, brócoli).</div>
+        </div>
+        <div class="diet-block">
+            <div class="diet-header"><span class="diet-title">Merienda (04:30 PM)</span><span class="diet-time">DENSIDAD</span></div>
+            <div class="diet-content"><strong>Fruta:</strong> 1 manzana verde o pera.<br><strong>Grasa:</strong> 10 almendras o nueces.<br><strong>Opcional:</strong> 1 scoop de proteína en agua.</div>
+        </div>
+        <div class="diet-block" style="border:none; padding-bottom:0;">
+            <div class="diet-header"><span class="diet-title">Cena (07:30 PM)</span><span class="diet-time">RECUPERACIÓN</span></div>
+            <div class="diet-content"><strong>Proteína:</strong> 200g de pescado blanco o atún.<br><strong>Fibra:</strong> Verduras al vapor o salteadas.<br><strong>Nota:</strong> Evitar carbohidratos complejos en esta comida.</div>
+        </div>
     </div>
 
-    <div class="section-title">Rutina de Entrenamiento</div>
+    <div class="section-title">02 - Plan de Entrenamiento</div>
 
     <div class="day-header"><span>LUNES</span> <span style="color:var(--accent)">PUSH (PECHO/HOMBRO)</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Press Banca (Barra)</span><span class="ex-desc">4x10. Baja la barra al centro del pecho sin rebotar. Codos a 45°.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Press Militar (Mancuerna)</span><span class="ex-desc">3x12. Sentado con espalda firme. Sube las mancuernas sin chocar arriba.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Elevaciones Laterales</span><span class="ex-desc">3x15. Sube hasta la altura del hombro. Meñiques ligeramente hacia arriba.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - EMOM</span><strong>Min 1:</strong> 12 Burpees / <strong>Min 2:</strong> 50 Saltos Lazo / <strong>Min 3:</strong> 15 Swings.</div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 10 REPS</span><span class="ex-name">Press de Banca (Barra)</span><span class="ex-desc">Acostado, baja la barra al pecho medio. Empuja explosivo. Mantiene los codos a 45 grados.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Press Militar (Mancuerna)</span><span class="ex-desc">Sentado, sube las pesas sobre la cabeza. Controla el descenso hasta la altura de las orejas.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 15 REPS</span><span class="ex-name">Elevaciones Laterales</span><span class="ex-desc">Sube las mancuernas hacia los lados sin balancear el torso. Enfoca el esfuerzo en el hombro lateral.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>EMOM 15':</strong><br>Min 1: 12 Burpees.<br>Min 2: 50 Saltos de Lazo.<br>Min 3: 15 Kettlebell Swings (con mancuerna).</div></div>
     </div>
 
     <div class="day-header"><span>MARTES</span> <span style="color:var(--accent)">PULL (ESPALDA/BÍCEPS)</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Remo con Barra</span><span class="ex-desc">4x10. Flexiona rodillas, torso a 45° y jala la barra hacia el ombligo.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Curl Barra Z</span><span class="ex-desc">3x12. Agarre en las curvas. Sube apretando bíceps sin mover los codos.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Remo Unilateral Mancuerna</span><span class="ex-desc">3x12 c/u. Apoya una mano en el banco y jala con el codo hacia la cadera.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - AMRAP</span>Tantas vueltas de: 10 Snatch c/mancuerna + 15 Pushups + 30 Escaladores.</div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 10 REPS</span><span class="ex-name">Remo con Barra</span><span class="ex-desc">Torso a 45 grados, jala la barra hacia el ombligo apretando la espalda alta.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Curl con Barra Z</span><span class="ex-desc">Usa el agarre curvo. Sube apretando el bíceps y baja lento sin estirar del todo abajo.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Remo Unilateral Mancuerna</span><span class="ex-desc">Apóyate en el banco, jala la mancuerna hacia la cadera manteniendo el codo pegado.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>AMRAP 15':</strong><br>10 Snatch c/mancuerna + 15 Flexiones + 30 Mountain Climbers.</div></div>
     </div>
 
-    <div class="day-header"><span>MIÉRCOLES</span> <span style="color:var(--accent)">PIERNA / CORE</span></div>
+    <div class="day-header"><span>MIÉRCOLES</span> <span style="color:var(--accent)">PIERNA / ABDOMEN</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Sentadilla (Mancuernas)</span><span class="ex-desc">4x12. Mantén las pesas a los lados. Baja rompiendo el paralelo con espalda recta.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Rueda Abdominal</span><span class="ex-desc">4x15. Baja controlado sin arquear la espalda. Aprieta el abdomen al subir.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Peso Muerto Rumano</span><span class="ex-desc">3x12. Baja la barra pegada a las piernas sintiendo el estiramiento femoral.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - FOR TIME</span>Lo más rápido: 100 Saltos + 50 Sentadillas + 100 Saltos.</div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 12 REPS</span><span class="ex-name">Sentadilla (Mancuerna)</span><span class="ex-desc">Sostén las pesas a los lados o al pecho. Baja la cadera rompiendo el paralelo.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 15 REPS</span><span class="ex-name">Rueda Abdominal</span><span class="ex-desc">Desde rodillas, rueda adelante controlando que la espalda no se doble.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Peso Muerto Rumano</span><span class="ex-desc">Baja la barra rozando las piernas hasta sentir tensión en el femoral. Espalda recta.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>FOR TIME:</strong><br>100 Saltos de lazo + 50 Sentadillas + 50 Abdominales + 100 Saltos de lazo.</div></div>
     </div>
 
-    <div class="day-header"><span>JUEVES</span> <span style="color:var(--accent)">PUSH B (INCLINADO/TRÍCEPS)</span></div>
+    <div class="day-header"><span>JUEVES</span> <span style="color:var(--accent)">PUSH B (PECHO/TRÍCEPS)</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Press Inclinado (Mancuerna)</span><span class="ex-desc">4x10. Banco a 30°. Enfoca el esfuerzo en la parte superior del pecho.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Press Francés (Barra Z)</span><span class="ex-desc">3x12. Acostado, baja la barra hacia tu frente moviendo solo antebrazos.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Flexiones de Brazo</span><span class="ex-desc">3x Máximas. Pecho al suelo y extensión completa.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - DEATH BY</span>Burpees: Min 1: 5 reps, Min 2: 6 reps... suma 1 cada minuto hasta fallar.</div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 10 REPS</span><span class="ex-name">Press Inclinado (Mancuerna)</span><span class="ex-desc">Banco a 30 grados. Enfoca el esfuerzo en la parte alta del pecho.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Press Francés (Barra Z)</span><span class="ex-desc">Acostado, baja la barra hacia la frente moviendo solo los antebrazos.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X MAX</span><span class="ex-name">Flexiones de Brazo</span><span class="ex-desc">Cuerpo recto, pecho al suelo. Haz todas las que puedas con buena técnica.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>DEATH BY BURPEES:</strong><br>Min 1: 5 Reps. Min 2: 6 Reps. Sigue sumando 1 cada minuto hasta fallar.</div></div>
     </div>
 
-    <div class="day-header"><span>VIERNES</span> <span style="color:var(--accent)">PULL B (REMO/BÍCEPS)</span></div>
+    <div class="day-header"><span>VIERNES</span> <span style="color:var(--accent)">PULL B (HOMBROS/BÍCEPS)</span></div>
     <div class="ex-list">
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Remo al Mentón (Barra Z)</span><span class="ex-desc">3x12. Jala la barra hacia el mentón subiendo los codos por encima de hombros.</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Curl Martillo (Mancuerna)</span><span class="ex-desc">3x12. Agarre vertical de mancuerna. Para trabajar el braquial (grosor).</span></div></div>
-        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Peso Muerto (Barra)</span><span class="ex-desc">4x8. Jala la barra desde el suelo manteniendo la espalda como una tabla.</span></div></div>
-        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - EMOM</span><strong>Min 1:</strong> 15 Swings / <strong>Min 2:</strong> 15 Goblet Squats / <strong>Min 3:</strong> 40s Plancha.</div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Remo al Mentón (Barra Z)</span><span class="ex-desc">Sube la barra pegada al cuerpo dirigiendo los codos hacia el techo.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">3 SERIES X 12 REPS</span><span class="ex-name">Curl Martillo (Mancuerna)</span><span class="ex-desc">Sostén las mancuernas con palmas enfrentadas. Sube sin girar la muñeca.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-meta">4 SERIES X 8 REPS</span><span class="ex-name">Peso Muerto Convencional</span><span class="ex-desc">Jala la barra desde el suelo usando piernas y espalda al tiempo. Técnica estricta.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">CROSSFIT FINISHER (15 MIN)</span><div class="diet-content"><strong>EMOM 15':</strong><br>Min 1: 15 Swings / Min 2: 15 Sentadillas Goblet / Min 3: 45s Plancha.</div></div>
     </div>
 
 </div>
@@ -139,7 +157,8 @@
 
     document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', function() {
-            this.closest('.ex-item')?.classList.toggle('completed', this.checked);
+            const row = this.closest('.ex-item') || this.closest('.wod-box');
+            row.classList.toggle('completed', this.checked);
         });
     });
 </script>
