@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Andrés - Definición Elite</title>
+    <title>Plan Andrés - Definición Elite V5</title>
     <style>
         :root {
             --bg: #000000;
@@ -29,7 +29,6 @@
         }
         .container { max-width: 500px; margin: 0 auto; padding: 15px; }
         
-        /* CALCULADORA */
         .input-group { background: var(--card-bg); padding: 20px; border-radius: 15px; border: 1px solid var(--accent); margin-bottom: 25px; text-align: center; }
         input[type="number"] { background: transparent; border: none; border-bottom: 3px solid var(--accent); color: white; font-size: 32px; width: 100px; text-align: center; outline: none; font-weight: bold; }
         .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
@@ -37,18 +36,16 @@
         .stat-val { font-size: 18px; font-weight: 900; color: var(--accent); display: block; }
         .stat-label { font-size: 9px; text-transform: uppercase; color: var(--text-dim); }
 
-        .section-title { border-left: 4px solid var(--accent); padding-left: 12px; margin: 35px 0 15px; text-transform: uppercase; font-size: 16px; font-weight: 900; color: var(--accent); letter-spacing: 1px; }
+        .section-title { border-left: 4px solid var(--accent); padding-left: 12px; margin: 35px 0 15px; text-transform: uppercase; font-size: 16px; font-weight: 900; color: var(--accent); }
 
         .card { background: var(--card-bg); border-radius: 15px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); }
         
-        /* NUTRICIÓN */
         .diet-block { margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 15px; }
         .diet-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
         .diet-time { background: var(--accent); color: white; font-size: 10px; font-weight: bold; padding: 2px 8px; border-radius: 4px; }
         .diet-title { font-size: 14px; font-weight: bold; }
         .diet-content { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
 
-        /* ENTRENAMIENTO */
         .day-header { background: #1a1a1a; padding: 15px; border-radius: 10px 10px 0 0; display: flex; justify-content: space-between; font-size: 13px; font-weight: 900; border: 1px solid var(--border); border-bottom: 2px solid var(--accent); }
         .ex-list { background: var(--card-bg); border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; margin-bottom: 25px; }
         .ex-item { padding: 15px; border-bottom: 1px solid #252525; display: flex; align-items: flex-start; gap: 15px; }
@@ -59,7 +56,6 @@
         .wod-box { background: rgba(255, 69, 0, 0.05); border: 1px dashed var(--accent); margin: 15px; padding: 15px; border-radius: 10px; }
         .wod-tag { background: var(--accent); color: white; font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
 
-        /* REGLAS */
         .rule-item { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 13px; }
         .rule-icon { color: var(--accent); font-weight: bold; }
 
@@ -71,7 +67,7 @@
 
 <div class="header">
     <h1 style="margin:0; letter-spacing: 2px;">ANDRÉS <span style="color:var(--accent)">ELITE</span></h1>
-    <p style="font-size: 11px; color: var(--text-dim); margin-top: 10px; letter-spacing: 2px;">DEFINICIÓN EXTREMA · 8 SEMANAS</p>
+    <p style="font-size: 11px; color: var(--text-dim); margin-top: 10px; letter-spacing: 2px;">DEFINICIÓN COMPLETA (6 COMIDAS)</p>
 </div>
 
 <div class="container">
@@ -86,36 +82,44 @@
         </div>
     </div>
 
-    <div class="section-title">01 - Reglas y Suplementos</div>
+    <div class="section-title">01 - Protocolo y Suplementos</div>
     <div class="card">
-        <div class="rule-item"><span class="rule-icon">✔</span> 3.5 Litros de agua diarios (Obligatorio).</div>
-        <div class="rule-item"><span class="rule-icon">✔</span> Multivitamínico (1 cápsula con el desayuno).</div>
-        <div class="rule-item"><span class="rule-icon">✔</span> Omega 3 (2g diarios con el almuerzo).</div>
-        <div class="rule-item"><span class="rule-icon">✔</span> Dormir 7-8 horas para reparación muscular.</div>
-        <div class="rule-item" style="color:var(--accent); font-weight:bold;"><span class="rule-icon">✘</span> Cero azúcar y harinas refinadas.</div>
+        <div class="rule-item"><span class="rule-icon">💧</span> 3.5 a 4 Litros de agua (puedes añadir electrolitos).</div>
+        <div class="rule-item"><span class="rule-icon">💊</span> Multivitamínico + Omega 3 (en el desayuno).</div>
+        <div class="rule-item"><span class="rule-icon">⚡</span> Creatina: 5g diarios (siempre a la misma hora).</div>
+        <div class="rule-item"><span class="rule-icon">⚡</span> Pre-entreno: Café cargado o citrulina.</div>
+        <div class="rule-item" style="color:var(--accent); font-weight:bold;"><span class="rule-icon">✔</span> Priorizar sal del himalaya en las comidas.</div>
     </div>
 
-    <div class="section-title">02 - Alimentación Planificada</div>
+    <div class="section-title">02 - Nutrición (Fiel a las Fotos)</div>
     <div class="card">
         <div class="diet-block">
-            <div class="diet-header"><span class="diet-title">Desayuno (06:30)</span><span class="diet-time">COMIDA 1</span></div>
-            <div class="diet-content">3 huevos enteros + 2 claras + 1/2 taza avena cocida con canela. Café negro.</div>
+            <div class="diet-header"><span class="diet-title">Comida 1 (Desayuno)</span><span class="diet-time">06:30</span></div>
+            <div class="diet-content">3 huevos enteros + 2 claras + 1/2 taza avena.</div>
         </div>
         <div class="diet-block">
-            <div class="diet-header"><span class="diet-title">Almuerzo (12:30)</span><span class="diet-time">COMIDA 2</span></div>
-            <div class="diet-content">200g Pollo o Carne magra + 150g Arroz o Papa + Ensalada verde ilimitada.</div>
+            <div class="diet-header"><span class="diet-title">Comida 2 (Almuerzo)</span><span class="diet-time">12:30</span></div>
+            <div class="diet-content">200g Pollo o Carne magra + 150g Arroz o Papa + Ensalada.</div>
         </div>
         <div class="diet-block">
-            <div class="diet-header"><span class="diet-title">Merienda (16:30)</span><span class="diet-time">COMIDA 3</span></div>
-            <div class="diet-content">1 Manzana verde + 10 almendras. (Opcional: Batido de proteína).</div>
+            <div class="diet-header"><span class="diet-title">Comida 3 (Merienda)</span><span class="diet-time">16:00</span></div>
+            <div class="diet-content">1 Manzana verde + 10 almendras.</div>
+        </div>
+        <div class="diet-block">
+            <div class="diet-header"><span class="diet-title">Comida 4 (Post-Entreno)</span><span class="diet-time">18:30</span></div>
+            <div class="diet-content">1 Scoop de Proteína ISO + 1 Banano pequeño.</div>
+        </div>
+        <div class="diet-block">
+            <div class="diet-header"><span class="diet-title">Comida 5 (Cena)</span><span class="diet-time">20:30</span></div>
+            <div class="diet-content">200g Pescado blanco o Atún + Gran porción de vegetales verdes.</div>
         </div>
         <div class="diet-block" style="border:none;">
-            <div class="diet-header"><span class="diet-title">Cena (19:30)</span><span class="diet-time">COMIDA 4</span></div>
-            <div class="diet-content">200g Pescado o Atún + Verduras al vapor. (Sin carbohidratos).</div>
+            <div class="diet-header"><span class="diet-title">Comida 6 (Antes de Dormir)</span><span class="diet-time">22:30</span></div>
+            <div class="diet-content">Infusión (Manzanilla/Tila) + 1 puñado pequeño de nueces.</div>
         </div>
     </div>
 
-    <div class="section-title">03 - Rutina de Fuerza y CrossFit</div>
+    <div class="section-title">03 - Rutina de Fuerza y WODs</div>
 
     <div class="day-header"><span>LUNES</span> <span style="color:var(--accent)">PUSH (PECHO/HOMBRO)</span></div>
     <div class="ex-list">
