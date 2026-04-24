@@ -3,221 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan Andrés - Definición Elite</title>
+    <title>Plan Andrés - Elite V3</title>
     <style>
         :root {
-            --bg: #121212;
-            --card-bg: #1e1e1e;
-            --accent: #e64a19;
+            --bg: #000000;
+            --card-bg: #1a1a1a;
+            --accent: #ff4500;
             --text-main: #ffffff;
-            --text-dim: #b0b0b0;
+            --text-dim: #a0a0a0;
             --border: #333;
-            --green: #4caf50;
         }
         body {
             background-color: var(--bg);
             color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
         .header {
             text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80');
+            padding: 50px 20px;
+            border-bottom: 4px solid var(--accent);
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80');
             background-size: cover;
-            border-bottom: 2px solid var(--accent);
         }
-        .header h1 { margin: 0; font-size: 28px; letter-spacing: 2px; }
-        .header .highlight { color: var(--accent); }
+        .container { max-width: 480px; margin: 0 auto; padding: 20px; }
         
-        .container { max-width: 500px; margin: 0 auto; padding: 15px; }
+        /* SECCIÓN EDITABLE */
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .stat-card { background: var(--card-bg); padding: 10px; border-radius: 8px; text-align: center; border: 1px solid var(--border); }
+        .stat-val { font-size: 18px; font-weight: bold; color: var(--accent); display: block; }
+        .stat-label { font-size: 9px; text-transform: uppercase; color: var(--text-dim); }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .stat-card {
-            background: var(--card-bg);
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            border: 1px solid var(--border);
-        }
-        .stat-val { font-size: 22px; font-weight: bold; color: var(--accent); display: block; }
-        .stat-label { font-size: 10px; text-transform: uppercase; color: var(--text-dim); }
+        .input-group { background: var(--card-bg); padding: 15px; border-radius: 12px; border: 1px solid var(--accent); margin-bottom: 20px; text-align: center; }
+        input[type="number"] { background: transparent; border: none; border-bottom: 2px solid var(--accent); color: white; font-size: 24px; width: 80px; text-align: center; outline: none; }
 
-        .section-title {
-            border-left: 3px solid var(--accent);
-            padding-left: 10px;
-            margin: 30px 0 15px;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
+        .section-title { border-left: 4px solid var(--accent); padding-left: 12px; margin: 30px 0 15px; text-transform: uppercase; font-size: 15px; font-weight: 900; letter-spacing: 1px; }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            border: 1px solid var(--border);
-        }
+        .card { background: var(--card-bg); border-radius: 12px; padding: 15px; margin-bottom: 15px; border: 1px solid var(--border); }
+        .diet-row { display: flex; margin-bottom: 12px; font-size: 13px; border-bottom: 1px solid #2a2a2a; padding-bottom: 8px; }
+        .diet-time { color: var(--accent); font-weight: bold; width: 70px; }
 
-        .diet-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #2a2a2a;
-            padding-bottom: 10px;
-        }
-        .diet-time { color: var(--accent); font-weight: bold; font-size: 13px; min-width: 60px; }
-        .diet-desc { font-size: 13px; line-height: 1.4; }
-
-        .routine-day { margin-bottom: 25px; }
-        .day-header {
-            background: #252525;
-            padding: 10px 15px;
-            border-radius: 6px 6px 0 0;
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        .day-label { color: var(--accent); }
-        .ex-list {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-top: none;
-            border-radius: 0 0 6px 6px;
-        }
-        .ex-item {
-            padding: 12px 15px;
-            border-bottom: 1px solid #2a2a2a;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .ex-info { flex: 1; }
-        .ex-name { font-size: 14px; font-weight: 500; }
-        .ex-sets { font-size: 11px; color: var(--text-dim); }
+        .day-header { background: #222; padding: 12px; border-radius: 8px 8px 0 0; display: flex; justify-content: space-between; font-size: 13px; font-weight: bold; border: 1px solid var(--border); }
+        .ex-list { background: var(--card-bg); border: 1px solid var(--border); border-top: none; border-radius: 0 0 8px 8px; margin-bottom: 20px; }
+        .ex-item { padding: 12px; border-bottom: 1px solid #2a2a2a; display: flex; align-items: flex-start; gap: 12px; }
+        .ex-name { font-size: 14px; font-weight: bold; display: block; color: #fff; }
+        .ex-desc { font-size: 11px; color: var(--text-dim); line-height: 1.4; display: block; margin-top: 3px; }
         
-        .wod-box {
-            background: rgba(230, 74, 25, 0.1);
-            border: 1px dashed var(--accent);
-            margin: 10px;
-            padding: 15px;
-            border-radius: 6px;
-        }
-        .wod-title { color: var(--accent); font-weight: bold; font-size: 12px; display: block; margin-bottom: 5px; }
+        .wod-box { background: rgba(255, 69, 0, 0.1); border: 1px dashed var(--accent); margin: 10px; padding: 12px; border-radius: 8px; }
+        .wod-tag { color: var(--accent); font-size: 11px; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 5px; }
 
-        .rule-item {
-            font-size: 13px;
-            margin-bottom: 12px;
-            display: flex;
-            gap: 10px;
-        }
-        .rule-num { color: var(--accent); font-weight: bold; }
-
-        input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); }
-        .completed { opacity: 0.4; text-decoration: line-through; }
+        input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent); cursor: pointer; }
+        .completed { opacity: 0.3; filter: grayscale(1); }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>ANDRÉS <span class="highlight">DEFINICIÓN</span></h1>
-    <p style="font-size: 12px; color: var(--text-dim); margin-top: 5px;">PLAN 8 SEMANAS · HOME GYM</p>
+    <h1 style="margin:0">ANDRÉS <span style="color:var(--accent)">DEFINICIÓN</span></h1>
+    <p style="font-size: 12px; color: var(--text-dim); margin-top: 10px;">HOME GYM · FULL EXPLAINED</p>
 </div>
 
 <div class="container">
-    <div class="stats-grid">
-        <div class="stat-card"><span class="stat-val">2.100</span><span class="stat-label">Kcal / Día</span></div>
-        <div class="stat-card"><span class="stat-val">160g</span><span class="stat-label">Proteína</span></div>
+    
+    <div class="input-group">
+        <label style="display:block; font-size:12px; margin-bottom:10px; color:var(--text-dim)">PESO ACTUAL (KG)</label>
+        <input type="number" id="weightInput" value="102" oninput="calculate()">
+        <div class="stats-grid">
+            <div class="stat-card"><span class="stat-val" id="kcal">2100</span><span class="stat-label">Kcal</span></div>
+            <div class="stat-card"><span class="stat-val" id="prot">163g</span><span class="stat-label">Proteína</span></div>
+            <div class="stat-card"><span class="stat-val" id="carb">210g</span><span class="stat-label">Carbo</span></div>
+        </div>
     </div>
 
-    <div class="section-title">01 ESTRATEGIA ALIMENTARIA</div>
+    <div class="section-title">Alimentación Diaria</div>
     <div class="card">
-        <div class="diet-item">
-            <div class="diet-time">06:30</div>
-            <div class="diet-desc"><strong>Desayuno:</strong> 3 huevos + 2 claras. 1 taza avena con canela. 1 fruta. Café negro.</div>
-        </div>
-        <div class="diet-item">
-            <div class="diet-time">12:30</div>
-            <div class="diet-desc"><strong>Almuerzo:</strong> 200g Pollo o Carne magra. 1 taza arroz o papa. Ensalada grande.</div>
-        </div>
-        <div class="diet-item">
-            <div class="diet-time">19:00</div>
-            <div class="diet-desc"><strong>Post-Entreno:</strong> 150g Pechuga o Atún. 1 taza arroz/papa. Verduras.</div>
-        </div>
-        <div class="diet-item">
-            <div class="diet-time">21:00</div>
-            <div class="diet-desc"><strong>Cena Ligera:</strong> 3 claras + 1 huevo. Verduras salteadas o Yogurt Griego.</div>
-        </div>
+        <div class="diet-row"><div class="diet-time">06:30</div><div class="diet-desc">3 Huevos + 2 claras + 1/2 taza avena + Café.</div></div>
+        <div class="diet-row"><div class="diet-time">12:30</div><div class="diet-desc">200g Pollo/Carne + 150g Arroz/Papa + Ensalada.</div></div>
+        <div class="diet-row"><div class="diet-time">19:30</div><div class="diet-desc">200g Pescado/Pollo + Vegetales verdes al vapor.</div></div>
     </div>
 
-    <div class="section-title">02 ENTRENAMIENTO (LUN-VIE)</div>
+    <div class="section-title">Rutina de Entrenamiento</div>
 
-    <div class="routine-day">
-        <div class="day-header"><span>LUNES</span> <span class="day-label">PUSH (PECHO/HOMBRO)</span></div>
-        <div class="ex-list">
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Press de Banca Plano (Barra)</div><div class="ex-sets">4 x 8-10 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Press Inclinado (Mancuernas)</div><div class="ex-sets">3 x 10-12 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Press Militar (Mancuernas)</div><div class="ex-sets">3 x 10-12 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Elevaciones Laterales</div><div class="ex-sets">3 x 15 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Extensión Tríceps (Barra Z)</div><div class="ex-sets">3 x 12 reps</div></div></div>
-            <div class="wod-box">
-                <span class="wod-title">WOD CROSSFIT FINAL (15 MIN)</span>
-                <div class="diet-desc"><strong>EMOM 15':</strong> Min 1: 15 Burpees / Min 2: 50 Saltos Lazo / Min 3: 15 Swings (Mancuerna).</div>
-            </div>
-        </div>
+    <div class="day-header"><span>LUNES</span> <span style="color:var(--accent)">PUSH (PECHO/HOMBRO)</span></div>
+    <div class="ex-list">
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Press Banca (Barra)</span><span class="ex-desc">4x10. Baja la barra al centro del pecho sin rebotar. Codos a 45°.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Press Militar (Mancuerna)</span><span class="ex-desc">3x12. Sentado con espalda firme. Sube las mancuernas sin chocar arriba.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Elevaciones Laterales</span><span class="ex-desc">3x15. Sube hasta la altura del hombro. Meñiques ligeramente hacia arriba.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - EMOM</span><strong>Min 1:</strong> 12 Burpees / <strong>Min 2:</strong> 50 Saltos Lazo / <strong>Min 3:</strong> 15 Swings.</div>
     </div>
 
-    <div class="routine-day">
-        <div class="day-header"><span>MARTES</span> <span class="day-label">PULL (ESPALDA/BÍCEPS)</span></div>
-        <div class="ex-list">
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Remo con Barra</div><div class="ex-sets">4 x 8-10 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Remo Unilateral (Mancuerna)</div><div class="ex-sets">3 x 12 reps c/u</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Peso Muerto Rumano</div><div class="ex-sets">3 x 10-12 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Curl Barra Z</div><div class="ex-sets">3 x 10-12 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Curl Martillo</div><div class="ex-sets">3 x 12 reps</div></div></div>
-            <div class="wod-box">
-                <span class="wod-title">WOD CROSSFIT FINAL (15 MIN)</span>
-                <div class="diet-desc"><strong>AMRAP 15':</strong> 10 Dumbbell Snatch + 15 Push-ups + 20 Mountain Climbers.</div>
-            </div>
-        </div>
+    <div class="day-header"><span>MARTES</span> <span style="color:var(--accent)">PULL (ESPALDA/BÍCEPS)</span></div>
+    <div class="ex-list">
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Remo con Barra</span><span class="ex-desc">4x10. Flexiona rodillas, torso a 45° y jala la barra hacia el ombligo.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Curl Barra Z</span><span class="ex-desc">3x12. Agarre en las curvas. Sube apretando bíceps sin mover los codos.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Remo Unilateral Mancuerna</span><span class="ex-desc">3x12 c/u. Apoya una mano en el banco y jala con el codo hacia la cadera.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - AMRAP</span>Tantas vueltas de: 10 Snatch c/mancuerna + 15 Pushups + 30 Escaladores.</div>
     </div>
 
-    <div class="routine-day">
-        <div class="day-header"><span>MIÉRCOLES</span> <span class="day-label">LEGS / CORE</span></div>
-        <div class="ex-list">
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Sentadilla con Mancuernas</div><div class="ex-sets">4 x 10-12 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Zancadas Caminando</div><div class="ex-sets">3 x 12 c/pierna</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Rueda Abdominal</div><div class="ex-sets">3 x 15 reps</div></div></div>
-            <div class="ex-item"><input type="checkbox"><div class="ex-info"><div class="ex-name">Plancha Frontal</div><div class="ex-sets">3 x 45 seg</div></div></div>
-            <div class="wod-box">
-                <span class="wod-title">WOD CROSSFIT FINAL (15 MIN)</span>
-                <div class="diet-desc"><strong>Tabata 15':</strong> 20 seg trabajo / 10 seg descanso de: Saltos de lazo y Air Squats.</div>
-            </div>
-        </div>
+    <div class="day-header"><span>MIÉRCOLES</span> <span style="color:var(--accent)">PIERNA / CORE</span></div>
+    <div class="ex-list">
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Sentadilla (Mancuernas)</span><span class="ex-desc">4x12. Mantén las pesas a los lados. Baja rompiendo el paralelo con espalda recta.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Rueda Abdominal</span><span class="ex-desc">4x15. Baja controlado sin arquear la espalda. Aprieta el abdomen al subir.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Peso Muerto Rumano</span><span class="ex-desc">3x12. Baja la barra pegada a las piernas sintiendo el estiramiento femoral.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - FOR TIME</span>Lo más rápido: 100 Saltos + 50 Sentadillas + 100 Saltos.</div>
     </div>
 
-    <div class="section-title">03 REGLAS DE ORO</div>
-    <div class="card">
-        <div class="rule-item"><span class="rule-num">1</span> 3 Litros de agua diarios mínimo.</div>
-        <div class="rule-item"><span class="rule-num">2</span> Sin harinas refinadas ni azúcar de Lunes a Viernes.</div>
-        <div class="rule-item"><span class="rule-num">3</span> Dormir 7-8 horas. El músculo crece durmiendo.</div>
-        <div class="rule-item"><span class="rule-num">4</span> Progresión: Sube un poco el peso cada semana.</div>
+    <div class="day-header"><span>JUEVES</span> <span style="color:var(--accent)">PUSH B (INCLINADO/TRÍCEPS)</span></div>
+    <div class="ex-list">
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Press Inclinado (Mancuerna)</span><span class="ex-desc">4x10. Banco a 30°. Enfoca el esfuerzo en la parte superior del pecho.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Press Francés (Barra Z)</span><span class="ex-desc">3x12. Acostado, baja la barra hacia tu frente moviendo solo antebrazos.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Flexiones de Brazo</span><span class="ex-desc">3x Máximas. Pecho al suelo y extensión completa.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - DEATH BY</span>Burpees: Min 1: 5 reps, Min 2: 6 reps... suma 1 cada minuto hasta fallar.</div>
+    </div>
+
+    <div class="day-header"><span>VIERNES</span> <span style="color:var(--accent)">PULL B (REMO/BÍCEPS)</span></div>
+    <div class="ex-list">
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Remo al Mentón (Barra Z)</span><span class="ex-desc">3x12. Jala la barra hacia el mentón subiendo los codos por encima de hombros.</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Curl Martillo (Mancuerna)</span><span class="ex-desc">3x12. Agarre vertical de mancuerna. Para trabajar el braquial (grosor).</span></div></div>
+        <div class="ex-item"><input type="checkbox"><div><span class="ex-name">Peso Muerto (Barra)</span><span class="ex-desc">4x8. Jala la barra desde el suelo manteniendo la espalda como una tabla.</span></div></div>
+        <div class="wod-box"><span class="wod-tag">WOD 15 MIN - EMOM</span><strong>Min 1:</strong> 15 Swings / <strong>Min 2:</strong> 15 Goblet Squats / <strong>Min 3:</strong> 40s Plancha.</div>
     </div>
 
 </div>
 
 <script>
+    function calculate() {
+        let w = document.getElementById('weightInput').value;
+        if(w > 30) {
+            document.getElementById('kcal').innerText = Math.round(w * 20.5);
+            document.getElementById('prot').innerText = Math.round(w * 1.6) + 'g';
+            document.getElementById('carb').innerText = Math.round((w * 20.5 * 0.4) / 4) + 'g';
+        }
+    }
+
     document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', function() {
-            this.parentElement.classList.toggle('completed', this.checked);
+            this.closest('.ex-item')?.classList.toggle('completed', this.checked);
         });
     });
 </script>
